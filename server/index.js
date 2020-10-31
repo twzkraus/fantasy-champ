@@ -6,7 +6,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/playerstats', (req, res) => {
+app.get('/stats', (req, res) => {
   console.log(req.body);
   executeRequest(req.body)
     .then(response => {
