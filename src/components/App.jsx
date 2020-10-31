@@ -10,7 +10,6 @@ const App = () => {
   const [teams, setTeams] = useState([exampleTeam, exampleTeam]);
 
   const getPlayer = (name) => {
-    // event.preventDefault();
     const playerObj = {
       resource: 'players',
       player_name: `${name.slice(0,1)}.${name.split(' ').slice(1)}`,
@@ -25,7 +24,6 @@ const App = () => {
     event.preventDefault();
     getPlayer(player)
       .then(result => {
-        debugger;
         let newTeams = [];
         teams.forEach(team => {
           if (team.name === teamName) {
@@ -38,7 +36,6 @@ const App = () => {
         setTeams(newTeams);
       })
       .catch(err => {
-        debugger;
       })
 
   }
