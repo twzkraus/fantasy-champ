@@ -5,12 +5,17 @@ const PRO_FOOTBALL_API_KEY = require('../secrets.js');
 // returns a promise
 const executeRequest = (options) => {
   let query = `api_key=${PRO_FOOTBALL_API_KEY}`;
+  let resource = 'players';
 
   for (let key in options) {
-    query += `&${key}=${options[key]}`;
+    if (key === 'resource') {
+      resource = options[key];
+    } else {
+      query += `&${key}=${options[key]}`;
+    }
   }
 
-  return curly.post(`https://profootballapi.com/players`, { postFields: query });
+  return curly.post(`https://profootballapi.com/${resource}`, { postFields: query });
 };
 
 // Working test case:
