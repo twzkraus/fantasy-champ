@@ -3,11 +3,12 @@ import axios from 'axios';
 import Team from './Team.jsx';
 import AddPlayer from './AddPlayer.jsx';
 
-import exampleTeam from '../exampleTeam.js';
+import { exampleTeams, examplePlayers } from '../exampleTeam.js';
 
 const App = () => {
 
-  const [teams, setTeams] = useState([exampleTeam, exampleTeam]);
+  const [teams, setTeams] = useState(exampleTeams);
+  const [players, setPlayers] = useState(examplePlayers);
 
   const getPlayer = (name) => {
     const playerObj = {
@@ -42,8 +43,8 @@ const App = () => {
 
   return (
     <div>
-      <AddPlayer teams={teams} addPlayer={addPlayerToTeam}/>
-      {teams.map(teamData => <Team teamData={teamData}/>)}
+      {/* <AddPlayer teams={teams} addPlayer={addPlayerToTeam}/> */}
+      {teams.map((teamName, i) => <Team key={teamName} teamName={teamName} index={i} players={players} />)}
     </div>
   );
 };
