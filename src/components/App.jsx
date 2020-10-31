@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div>
-      <AddPlayer />
+      <AddPlayer teams={teams} />
       {teams.map(teamData => <Team teamData={teamData}/>)}
     </div>
   );
