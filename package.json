@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/twzkraus/fantasy-champ#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "express": "^4.17.1",
     "node-libcurl": "^2.2.0",
     "path": "^0.12.7",

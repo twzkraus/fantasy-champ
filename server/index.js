@@ -8,8 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('dist'));
 
 app.get('/stats', (req, res) => {
-  console.log(req.body);
-  executeRequest(req.body)
+  console.log(req.query);
+  executeRequest(req.query)
     .then(response => {
       res.send(response.data);
     })
