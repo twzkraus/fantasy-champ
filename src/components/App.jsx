@@ -21,29 +21,29 @@ const App = () => {
     });
   };
 
-  const addPlayerToTeam = (event, player, teamName) => {
+  const addPlayerToTeam = (event, name, position, teamID) => {
     event.preventDefault();
-    getPlayer(player)
+    getPlayer(name)
       .then(result => {
-        let newTeams = [];
-        teams.forEach(team => {
-          if (team.name === teamName) {
-            let newTeamPlayers = team.players.slice().push(result);
-            newTeams.push({ name: team.name, players: newTeamPlayers })
-          } else {
-            newTeams.push(team);
-          }
-        });
-        setTeams(newTeams);
+        const newPlayer = {
+          name,
+          position,
+          teamID: parseInt(teamID),
+          stats: result.data,
+          points: 0,
+        };
+        let tempPlayers = players.slice();
+        tempPlayers.push(newPlayer);
+        setPlayers(tempPlayers);
       })
       .catch(err => {
+        console.log('error getting player', err);
       })
-
   }
 
   return (
     <div>
-      {/* <AddPlayer teams={teams} addPlayer={addPlayerToTeam}/> */}
+      <AddPlayer teams={teams} addPlayer={addPlayerToTeam}/>
       {teams.map((teamName, i) => <Team key={teamName} teamName={teamName} index={i} players={players} />)}
     </div>
   );
