@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Team from './Team.jsx';
+import PlayerList from './PlayerList.jsx';
 import AddPlayer from './AddPlayer.jsx';
 import popularPlayers from '../../data/popularPlayers.json';
 
-import { exampleTeams, examplePlayers } from '../exampleTeam.js';
+// import { exampleLists, examplePlayers } from '../exampleTeam.js';
 
 const App = () => {
 
-  const [teams, setTeams] = useState(exampleTeams);
+  const [lists, setLists] = useState(['All Players']);
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const App = () => {
         name: key,
         position: popularPlayers[key].position,
         stats: popularPlayers[key].stats,
-        teamID: ++i % 2
+        listID: 0
       })
     }
     setPlayers(tempPlayers);
@@ -36,14 +36,14 @@ const App = () => {
     });
   };
 
-  const addPlayerToTeam = (event, name, position, teamID) => {
+  const addPlayerToList = (event, name, position, listID) => {
     event.preventDefault();
     getPlayer(name)
       .then(result => {
         const newPlayer = {
           name,
           position,
-          teamID: parseInt(teamID),
+          listID: parseInt(listID),
           stats: result.data,
           points: 0,
         };
@@ -58,8 +58,8 @@ const App = () => {
 
   return (
     <div>
-      <AddPlayer teams={teams} addPlayer={addPlayerToTeam}/>
-      {teams.map((teamName, i) => <Team key={teamName} teamName={teamName} index={i} players={players} />)}
+      <AddPlayer lists={lists} addPlayer={addPlayerToList}/>
+      {lists.map((listName, i) => <PlayerList key={listName} playerListName={listName} index={i} players={players} />)}
     </div>
   );
 };
