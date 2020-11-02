@@ -2,18 +2,33 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Team from './Team.jsx';
 import AddPlayer from './AddPlayer.jsx';
+import popularPlayers from '../../data/popularPlayers.json';
 
 import { exampleTeams, examplePlayers } from '../exampleTeam.js';
 
 const App = () => {
 
   const [teams, setTeams] = useState(exampleTeams);
-  const [players, setPlayers] = useState(examplePlayers);
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    let tempPlayers = [];
+    let i = 0;
+    for (let key in popularPlayers) {
+      tempPlayers.push({
+        name: key,
+        position: popularPlayers[key].position,
+        stats: popularPlayers[key].stats,
+        teamID: ++i % 2
+      })
+    }
+    setPlayers(tempPlayers);
+  }, []);
 
   const getPlayer = (name) => {
     const playerObj = {
       resource: 'players',
-      player_name: `${name.slice(0,1)}.${name.split(' ').slice(1)}`,
+      player_name: `${name.slice(0,1)}.${name.split(' ').slice(1).join(' ')}`,
       stats_type: 'offense'
     };
     return axios.get('/stats', {
@@ -39,7 +54,7 @@ const App = () => {
       .catch(err => {
         console.log('error getting player', err);
       })
-  }
+  };
 
   return (
     <div>
