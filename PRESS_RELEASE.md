@@ -1,9 +1,8 @@
-# Fantasy Champ
+# NFL Stats Champ
 ## One App, All your Teams
-Fantasy Champ helps you keep track of your Fantasy Football teams.
-Just add your teams, specify the league format, and track their progress throughout the day.
-No more switching between apps to check each score--Fantasy Champ is your one-stop shop to track all of your teams.
+NFL Stats Champ helps you keep track of your favorite NFL players.
+Just add your favorite players, or select favorites from our list of the most popular players.
+With NFL Stats Champ, you have a one-stop shop for tracking stats of NFL players, with data reaching back to 2009.
 
 ### How to Get Started
-Just add your teams and the league format, and Fantasy Champ will do the rest! All your scores will be in one place.
-The championship is yours for the taking!
+Take a look through the popular players, select some favorites, and add some more if you'd like! Stats for all of your favorites will be in one place.
