@@ -49,9 +49,9 @@ const SingleGameStats = ({ game, categories }) => {
   return (
     <tr>
       <td>{`${game.date.slice(0, 4)}-${game.date.slice(4, 6)}-${game.date.slice(6, 8)}`}</td>
-      {categories.includes('passing') ? getPassingData(realGameObj) : ''}
-      {categories.includes('rushing') ? getRushingData(realGameObj) : ''}
-      {categories.includes('receiving') ? getReceivingData(realGameObj) : ''}
+      {categories.includes('passing') ? getPassingData(realGameObj) : null}
+      {categories.includes('rushing') ? getRushingData(realGameObj) : null}
+      {categories.includes('receiving') ? getReceivingData(realGameObj) : null}
     </tr>
   )
 }

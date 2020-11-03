@@ -40,12 +40,14 @@ const Player = ({ playerData, addToList }) => {
     return (
       <React.Fragment>
       <button onClick={(e) => addToList(e, playerData.name, 1)}>Add to Favorites</button>
-      <table>
-        <tr>
-          {headers.length ? <th>Date</th> : ''}
-          {headers.map(head => <th>{head}</th>)}
-        </tr>
-        <tbody>{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
+      <table key={`${playerData.name}-table`}>
+        <thead key="table-head">
+          <tr>
+            {headers.length ? <th>Date</th> : null}
+            {headers.map((head, i) => <th key={i}>{head}</th>)}
+          </tr>
+        </thead>
+        <tbody key="table-body">{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
       </table>
       </React.Fragment>
     )
