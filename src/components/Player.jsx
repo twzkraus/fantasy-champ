@@ -39,10 +39,11 @@ const Player = ({ playerData, addToList, lists }) => {
 
     return (
       <React.Fragment>
-        <p>This player is in lists:</p>
+        <p className="text">This player is in the following lists:</p>
         {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => <p>{filteredLists}</p>)}
         <p>Add to:</p>
         {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
+        {headers.length ? <h4>Stats:</h4> : null}
         <table key={`${playerData.name}-table`}>
           <thead key="table-head">
             <tr>
