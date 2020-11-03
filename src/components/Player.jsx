@@ -40,14 +40,14 @@ const Player = ({ playerData, addToList, lists }) => {
 
     return (
       <>
-        <h4>This player is in the following lists:</h4>
-        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => ' - ' + filteredLists)}
+        {/* <h4>This player is in the following lists:</h4>
+        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => ' - ' + filteredLists)} */}
         <h4>Add to:</h4>
-        {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
+        {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button className={styles.subPlayerButton} onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
         {headers.length ? <h4>Stats:</h4> : null}
-        <table key={`${playerData.name}-table`}>
-          <thead key="table-head">
-            <tr>
+        <table key={`${playerData.name}-table`} className={styles.statsTable}>
+          <thead key="table-head" className={styles.statsTable}>
+            <tr className={styles.statsTable}>
               {headers.length ? <th>Date</th> : null}
               {headers.map((head, i) => <th key={i}>{head}</th>)}
             </tr>
