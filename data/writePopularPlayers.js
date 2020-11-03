@@ -35,7 +35,7 @@ const popularPlayers = [
     position: 'WR',
   },
   {
-    name: 'Todd Gurley II',
+    name: 'Todd Gurley',
     position: 'RB',
   },
   {
