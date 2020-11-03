@@ -6,7 +6,7 @@ import popularPlayers from '../../data/popularPlayers.json';
 
 const App = () => {
 
-  const [lists, setLists] = useState(['All Players']);
+  const [lists, setLists] = useState(['All Players', 'Favorites']);
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {

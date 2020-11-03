@@ -1,19 +1,4 @@
 import React from 'react';
-// const jsonexport = require("jsonexport/dist");
-
-// const parseGameData = (obj, categories) => {
-//   let statString = '';
-//   for (let key in obj) {
-//     if (key === 'rushing' && headers.includes('Date Att. Yds. TDs')) {
-//       statString += `${obj[key].attempts} ${obj[key].yards} ${obj[key].touchdowns} `;
-//     } else if (key === 'receiving' && headers.includes('Date Rec. Yds. TDs')) {
-//       statString += `${obj[key].receptions} ${obj[key].yards} ${obj[key].touchdowns} `;
-//     } else if (key === 'passing' && headers.includes('Date Comp. Att. Yds. TDs')) {
-//       statString += `${obj[key].completions} ${obj[key].attempts} ${obj[key].yards} ${obj[key].touchdowns}`;
-//     }
-//   }
-//   return statString;
-// };
 
 const getPassingData = (obj) => {
   if (obj.passing) {
