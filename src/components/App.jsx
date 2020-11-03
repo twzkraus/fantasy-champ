@@ -54,7 +54,9 @@ const App = () => {
       })
       .catch(err => {
         console.log('error getting player', err);
-      })
+      });
+    document.getElementById('player-name').value = '';
+    document.getElementById('position').value = 'QB';
   };
 
   const includePlayerInList = (event, name, listID) => {
@@ -70,6 +72,7 @@ const App = () => {
   const addList = (event, name) => {
     event.preventDefault();
     setLists(lists.concat(name));
+    document.getElementById('list-name').value = '';
   };
 
   const changeList = (event, listID) => {
@@ -82,9 +85,9 @@ const App = () => {
       <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
       <AddList addList={addList}/>
       <nav>
-      {lists.map((list, i) =>
-        <button key={i} onClick={(e) => changeList(e, i)}>{list}</button>
-      )}
+        {lists.map((list, i) =>
+          <button key={i} onClick={(e) => changeList(e, i)}>{list}</button>
+        )}
       </nav>
       {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
       <Player key={filteredPlayer.name} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
