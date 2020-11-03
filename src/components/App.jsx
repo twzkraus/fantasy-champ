@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlayerList from './PlayerList.jsx';
+import Player from './Player.jsx';
 import AddPlayer from './AddPlayer.jsx';
 import AddList from './AddList.jsx';
 import popularPlayers from '../../data/popularPlayers.json';
@@ -9,6 +10,7 @@ const App = () => {
 
   const [lists, setLists] = useState(['All Players', 'Favorites']);
   const [players, setPlayers] = useState([]);
+  const [selectedList, setSelectedList] = useState(0);
 
   useEffect(() => {
     let tempPlayers = [];
@@ -70,11 +72,22 @@ const App = () => {
     setLists(lists.concat(name));
   };
 
+  const changeList = (event, listID) => {
+    event.preventDefault();
+    setSelectedList(listID);
+  };
+
   return (
     <div>
       <AddPlayer lists={lists} addPlayer={addPlayerToList}/>
       <AddList addList={addList}/>
-      {lists.map((listName, i) => <PlayerList key={listName} playerListName={listName} index={i} players={players} addToList={includePlayerInList}/>)}
+      <nav>
+      {lists.map((list, i) =>
+        <button onClick={(e) => changeList(e, i)}>{list}</button>
+      )}
+      </nav>
+      {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
+      <Player key={filteredPlayer.name} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
     </div>
   );
 };
