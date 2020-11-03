@@ -4,8 +4,6 @@ import PlayerList from './PlayerList.jsx';
 import AddPlayer from './AddPlayer.jsx';
 import popularPlayers from '../../data/popularPlayers.json';
 
-// import { exampleLists, examplePlayers } from '../exampleTeam.js';
-
 const App = () => {
 
   const [lists, setLists] = useState(['All Players']);
