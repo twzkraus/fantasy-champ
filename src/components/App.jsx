@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlayerList from './PlayerList.jsx';
 import AddPlayer from './AddPlayer.jsx';
+import AddList from './AddList.jsx';
 import popularPlayers from '../../data/popularPlayers.json';
 
 const App = () => {
@@ -54,9 +55,16 @@ const App = () => {
       })
   };
 
+  const addList = (event, name) => {
+    debugger;
+    event.preventDefault();
+    setLists(lists.concat(name));
+  }
+
   return (
     <div>
       <AddPlayer lists={lists} addPlayer={addPlayerToList}/>
+      <AddList addList={addList}/>
       {lists.map((listName, i) => <PlayerList key={listName} playerListName={listName} index={i} players={players} />)}
     </div>
   );
