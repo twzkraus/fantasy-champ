@@ -40,7 +40,7 @@ const Player = ({ playerData }) => {
     return (
       <table>
         <tr>
-          <th>Date</th>
+          {headers.length ? <th>Date</th> : ''}
           {headers.map(head => <th>{head}</th>)}
         </tr>
         <tbody>{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
