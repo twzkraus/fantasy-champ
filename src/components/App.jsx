@@ -82,7 +82,7 @@ const App = () => {
   };
 
   return (
-    <div className={styles.global}>
+    <div className={styles.container}>
       <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
       <AddList addList={addList}/>
       <nav>
@@ -90,6 +90,11 @@ const App = () => {
           <button key={i} onClick={(e) => changeList(e, i)}>{list}</button>
         )}
       </nav>
+      <div className={styles.listHead}>
+        <h2>Name</h2>
+        <h2>Position</h2>
+        <h2>Lists</h2>
+      </div>
       {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
       <Player key={filteredPlayer.name} lists={lists} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
     </div>

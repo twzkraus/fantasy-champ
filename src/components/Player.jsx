@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SingleGameStats from './SingleGameStats.jsx';
+import styles from './Player.module.css';
 
 const Player = ({ playerData, addToList, lists }) => {
 
@@ -38,10 +39,10 @@ const Player = ({ playerData, addToList, lists }) => {
     let headers = getHeaders(statsArray[statsArray.length - 1]);
 
     return (
-      <React.Fragment>
-        <p className="text">This player is in the following lists:</p>
-        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => <p>{filteredLists}</p>)}
-        <p>Add to:</p>
+      <>
+        <h4>This player is in the following lists:</h4>
+        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => ' - ' + filteredLists)}
+        <h4>Add to:</h4>
         {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
         {headers.length ? <h4>Stats:</h4> : null}
         <table key={`${playerData.name}-table`}>
@@ -53,15 +54,21 @@ const Player = ({ playerData, addToList, lists }) => {
           </thead>
           <tbody key="table-body">{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
         </table>
-      </React.Fragment>
+      </>
     )
   }
 
   return (
-    <div>
-      <div key={`${playerData.name}-header`} onClick={handleClick}>{playerData.name} {playerData.position}</div>
-      {clicked ? getExpandedStats() : ''}
+    <>
+    <div >
+      <div key={`${playerData.name}-header`} className={styles.playerBox} onClick={handleClick}>
+        <p className={styles.playerName}>{playerData.name}</p>
+        <p className={styles.playerPos}>{playerData.position}</p>
+        <p className={styles.listNames}>{playerData.listIDs.map(id => ' - ' + lists[id] + '\n')}</p>
+      </div>
     </div>
+      {clicked ? getExpandedStats() : ''}
+    </>
   )
 };
 

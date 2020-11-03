@@ -1,0 +1,32 @@
+@media (min-width: 600px) {
+  .player {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5%;
+    background-color: red;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+  }
+}
+
+.playerBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  background-color: rgb(217, 233, 243);
+  padding: 0px;
+  margin: 10px;
+}
+
+.playerName {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  float: left;
+}
+
+.playerPos {
+  font-size: 20px;
+}
