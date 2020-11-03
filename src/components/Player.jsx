@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SingleGameStats from './SingleGameStats.jsx';
 
-const Player = ({ playerData }) => {
+const Player = ({ playerData, addToList }) => {
 
   const [clicked, setClicked] = useState(false);
   let categories = [];
@@ -38,6 +38,8 @@ const Player = ({ playerData }) => {
     let headers = getHeaders(statsArray[statsArray.length - 1]);
 
     return (
+      <React.Fragment>
+      <button onClick={(e) => addToList(e, playerData.name, 1)}>Add to Favorites</button>
       <table>
         <tr>
           {headers.length ? <th>Date</th> : ''}
@@ -45,6 +47,7 @@ const Player = ({ playerData }) => {
         </tr>
         <tbody>{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
       </table>
+      </React.Fragment>
     )
   }
 

@@ -18,7 +18,7 @@ const App = () => {
         name: key,
         position: popularPlayers[key].position,
         stats: popularPlayers[key].stats,
-        listID: 0
+        listIDs: [0]
       })
     }
     setPlayers(tempPlayers);
@@ -42,7 +42,7 @@ const App = () => {
         const newPlayer = {
           name,
           position,
-          listID: parseInt(listID),
+          listIDs: [0, parseInt(listID)],
           stats: result.data,
           points: 0,
         };
@@ -55,17 +55,26 @@ const App = () => {
       })
   };
 
+  const includePlayerInList = (event, name, listID) => {
+    let playersCopy = players.slice();
+    players.forEach((player, i) => {
+      if (player.name === name && !player.listIDs.includes(listID)) {
+        playersCopy[i].listIDs.push(listID);
+      }
+    });
+    setPlayers(playersCopy);
+  }
+
   const addList = (event, name) => {
-    debugger;
     event.preventDefault();
     setLists(lists.concat(name));
-  }
+  };
 
   return (
     <div>
       <AddPlayer lists={lists} addPlayer={addPlayerToList}/>
       <AddList addList={addList}/>
-      {lists.map((listName, i) => <PlayerList key={listName} playerListName={listName} index={i} players={players} />)}
+      {lists.map((listName, i) => <PlayerList key={listName} playerListName={listName} index={i} players={players} addToList={includePlayerInList}/>)}
     </div>
   );
 };
