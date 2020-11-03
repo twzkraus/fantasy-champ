@@ -37,14 +37,14 @@ const App = () => {
     });
   };
 
-  const addPlayerToList = (event, name, position, listID) => {
+  const addPlayerToAllPlayers = (event, name, position) => {
     event.preventDefault();
     getPlayer(name)
       .then(result => {
         const newPlayer = {
           name,
           position,
-          listIDs: [0, parseInt(listID)],
+          listIDs: [0],
           stats: result.data,
           points: 0,
         };
@@ -79,11 +79,11 @@ const App = () => {
 
   return (
     <div>
-      <AddPlayer lists={lists} addPlayer={addPlayerToList}/>
+      <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
       <AddList addList={addList}/>
       <nav>
       {lists.map((list, i) =>
-        <button onClick={(e) => changeList(e, i)}>{list}</button>
+        <button key={i} onClick={(e) => changeList(e, i)}>{list}</button>
       )}
       </nav>
       {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
