@@ -90,7 +90,7 @@ const App = () => {
         )}
       </nav>
       {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
-      <Player key={filteredPlayer.name} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
+      <Player key={filteredPlayer.name} lists={lists} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SingleGameStats from './SingleGameStats.jsx';
 
-const Player = ({ playerData, addToList }) => {
+const Player = ({ playerData, addToList, lists }) => {
 
   const [clicked, setClicked] = useState(false);
   let categories = [];
@@ -39,16 +39,19 @@ const Player = ({ playerData, addToList }) => {
 
     return (
       <React.Fragment>
-      <button onClick={(e) => addToList(e, playerData.name, 1)}>Add to Favorites</button>
-      <table key={`${playerData.name}-table`}>
-        <thead key="table-head">
-          <tr>
-            {headers.length ? <th>Date</th> : null}
-            {headers.map((head, i) => <th key={i}>{head}</th>)}
-          </tr>
-        </thead>
-        <tbody key="table-body">{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
-      </table>
+        <p>This player is in lists:</p>
+        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => <p>{filteredLists}</p>)}
+        <p>Add to:</p>
+        {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
+        <table key={`${playerData.name}-table`}>
+          <thead key="table-head">
+            <tr>
+              {headers.length ? <th>Date</th> : null}
+              {headers.map((head, i) => <th key={i}>{head}</th>)}
+            </tr>
+          </thead>
+          <tbody key="table-body">{statsArray.map((game, i) => <SingleGameStats game={game} categories={categories} key={i}/>)}</tbody>
+        </table>
       </React.Fragment>
     )
   }
