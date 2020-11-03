@@ -5,6 +5,7 @@ import Player from './Player.jsx';
 import AddPlayer from './AddPlayer.jsx';
 import AddList from './AddList.jsx';
 import popularPlayers from '../../data/popularPlayers.json';
+import styles from './App.module.css';
 
 const App = () => {
 
@@ -81,7 +82,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className={styles.global}>
       <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
       <AddList addList={addList}/>
       <nav>
