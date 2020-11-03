@@ -1,0 +1,17 @@
+.textInput {
+  height: 30px;
+  font-size: 30px;
+}
+
+.button {
+  composes: listButton from "./App.module.css";
+}
+
+.dropdown {
+  font-size: 30px;
+}
+
+.header {
+  font-size: 35px;
+  margin-bottom: 5px;
+}

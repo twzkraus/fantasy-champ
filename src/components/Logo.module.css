@@ -1,0 +1,18 @@
+.logoText {
+  font-family: 'Slabo 27px', serif;
+  font-size: 70px;
+  margin-left: 18%;
+  margin-top: 60px;
+  color: rgb(213, 10, 10);
+  font-weight: 900;
+}
+
+.logoBox {
+  height: 225px;
+  background-image: url('https://media.istockphoto.com/photos/football-field-panorama-picture-id519090687?k=6&m=519090687&s=170667a&w=0&h=5Gu94Wfy2BmdUYAP54dYJMgB3eg7P7gEAJEBAZd7uiU=');
+  background-position: 0% 65%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 10px solid rgb(1, 51, 105);
+  border-radius: 15px;
+}

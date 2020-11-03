@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Logo from './Logo.jsx';
 import PlayerList from './PlayerList.jsx';
 import Player from './Player.jsx';
 import AddPlayer from './AddPlayer.jsx';
@@ -82,12 +83,18 @@ const App = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
-      <AddList addList={addList}/>
+    <div>
+      <Logo />
+      <div className={styles.container}>
+        <AddPlayer lists={lists} addPlayer={addPlayerToAllPlayers}/>
+        <AddList addList={addList}/>
+      </div>
       <nav>
+        <h1 className={styles.listNav}>Your Lists:</h1>
         {lists.map((list, i) =>
-          <button key={i} onClick={(e) => changeList(e, i)}>{list}</button>
+          i === selectedList ?
+            <button className={styles.selected} key={i} onClick={(e) => changeList(e, i)}>{list}</button> :
+            <button className={styles.listButton} key={i} onClick={(e) => changeList(e, i)}>{list}</button>
         )}
       </nav>
       <div className={styles.listHead}>

@@ -8,4 +8,34 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  font-size: 25px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.listButton {
+  margin-top: 15px;
+  height: 45px;
+  font-size: 25px;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 5%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.listNav {
+  font-size: 30px;
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
+
+.selected {
+  composes: listButton;
+  background-color: green;
+  color: white;
 }
