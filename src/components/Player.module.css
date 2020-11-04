@@ -12,7 +12,7 @@
 
 .playerBox {
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-around;
   border-radius: 5px;
   background-color: rgb(217, 233, 243);
@@ -29,6 +29,8 @@
 
 .playerPos {
   font-size: 20px;
+  position: relative;
+  margin-right: 50px;
 }
 
 .statsTable {

@@ -7,7 +7,7 @@ const AddPlayer = ({ lists, addPlayer }) => {
 
   return (
     <form>
-      <h4 className={styles.header}>Add a Player:</h4>
+      <h4 className={styles.header}>Add Player:</h4>
       <input type="text" className={styles.textInput} name="player-name" id="player-name" placeholder="Player Name"></input>
       <select id="position" name="position" className={styles.dropdown}>
         {positions.map(pos => <option value={pos} key={pos}>{pos}</option>)}
