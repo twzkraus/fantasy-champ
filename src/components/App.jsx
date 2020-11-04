@@ -69,6 +69,17 @@ const App = () => {
       }
     });
     setPlayers(playersCopy);
+  };
+
+  const removePlayerFromList = (event, name, listID) => {
+    let playersCopy = players.slice();
+    players.forEach((player, i) => {
+      if (player.name === name && player.listIDs.includes(listID)) {
+        let arr = playersCopy[i].listIDs;
+        arr.splice(arr.indexOf(listID), 1);
+      }
+    });
+    setPlayers(playersCopy);
   }
 
   const addList = (event, name) => {
@@ -103,7 +114,7 @@ const App = () => {
         <h2>Lists</h2>
       </div>
       {players.filter(player => player.listIDs.includes(selectedList)).map(filteredPlayer =>
-      <Player key={filteredPlayer.name} lists={lists} playerData={filteredPlayer} addToList={includePlayerInList}/>)}
+      <Player key={filteredPlayer.name} lists={lists} playerData={filteredPlayer} addToList={includePlayerInList} removeFromList={removePlayerFromList}/>)}
     </div>
   );
 };

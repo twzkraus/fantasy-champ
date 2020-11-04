@@ -11,6 +11,15 @@ const getPassingData = (obj) => {
         <td className={styles.statsTable}>{obj.passing.touchdowns}</td>
       </React.Fragment>
     )
+  } else {
+    return (
+      <React.Fragment>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+      </React.Fragment>
+    )
   }
 };
 
@@ -21,6 +30,14 @@ const getRushingData = (obj) => {
         <td className={styles.statsTable}>{obj.rushing.attempts}</td>
         <td className={styles.statsTable}>{obj.rushing.yards}</td>
         <td className={styles.statsTable}>{obj.rushing.touchdowns}</td>
+      </React.Fragment>
+    )
+  } else {
+    return (
+      <React.Fragment>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
       </React.Fragment>
     )
   }
@@ -34,8 +51,16 @@ const getReceivingData = (obj) => {
       <td className={styles.statsTable}>{obj.receiving.yards}</td>
       <td className={styles.statsTable}>{obj.receiving.touchdowns}</td>
     </React.Fragment>
-  )
-}
+    )
+  } else {
+    return (
+      <React.Fragment>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+        <td className={styles.statsTable}>{0}</td>
+      </React.Fragment>
+    )
+  }
 };
 
 const SingleGameStats = ({ game, categories }) => {
@@ -49,7 +74,7 @@ const SingleGameStats = ({ game, categories }) => {
 
   return (
     <tr className={styles.statsTable}>
-      <td className={styles.statsTable}>{`${game.date.slice(0, 4)}-${game.date.slice(4, 6)}-${game.date.slice(6, 8)}`}</td>
+      <td className={styles.statsTable}>{`${game.date.slice(4, 6)}/${game.date.slice(6, 8)}/${game.date.slice(0, 4)}`}</td>
       {categories.includes('passing') ? getPassingData(realGameObj) : null}
       {categories.includes('rushing') ? getRushingData(realGameObj) : null}
       {categories.includes('receiving') ? getReceivingData(realGameObj) : null}

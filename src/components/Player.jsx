@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import SingleGameStats from './SingleGameStats.jsx';
 import styles from './Player.module.css';
 
-const Player = ({ playerData, addToList, lists }) => {
+const Player = ({ playerData, addToList, removeFromList, lists }) => {
 
   const [clicked, setClicked] = useState(false);
+  const [warningDisplayed, setWarningDisplayed] = useState(false);
   let categories = [];
 
   const handleClick = () => {
@@ -30,6 +31,11 @@ const Player = ({ playerData, addToList, lists }) => {
     return headers;
   }
 
+  const warnUser = () => {
+    setWarningDisplayed(true);
+    setTimeout(() => setWarningDisplayed(false), 1500);
+  }
+
   const getExpandedStats = () => {
     let statsArray = [];
     for (let key in playerData.stats) {
@@ -40,10 +46,14 @@ const Player = ({ playerData, addToList, lists }) => {
 
     return (
       <>
-        {/* <h4>This player is in the following lists:</h4>
-        {lists.filter((listName, i) => playerData.listIDs.includes(i)).map(filteredLists => ' - ' + filteredLists)} */}
+        <h4>Current Lists (click to remove):</h4>
+          <button className={styles.subPlayerButton} onClick={warnUser}>{lists[0]}</button>
+          {lists.filter((listName, i) => playerData.listIDs.includes(i) && i !== 0).map(filteredLists => <button className={styles.subPlayerButton} onClick={(e) => removeFromList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
+          <div>
+          {warningDisplayed ? <p className={styles.warningText}>You can't remove a player from all players</p> : ''}
+          </div>
         <h4>Add to:</h4>
-        {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button className={styles.subPlayerButton} onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
+          {lists.filter((listName, i) => !playerData.listIDs.includes(i)).map(filteredLists => <button className={styles.subPlayerButton} onClick={(e) => addToList(e, playerData.name, lists.indexOf(filteredLists))}>{filteredLists}</button>)}
         {headers.length ? <h4>Stats:</h4> : null}
         <table key={`${playerData.name}-table`} className={styles.statsTable}>
           <thead key="table-head" className={styles.statsTable}>
