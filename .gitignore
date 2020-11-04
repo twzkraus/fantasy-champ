@@ -4,4 +4,3 @@ archive/
 package-lock.json
 bundle.js
 .vscode/
-*.json
