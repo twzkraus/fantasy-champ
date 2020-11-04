@@ -41,24 +41,26 @@ const App = () => {
 
   const addPlayerToAllPlayers = (event, name, position) => {
     event.preventDefault();
-    getPlayer(name)
-      .then(result => {
-        const newPlayer = {
-          name,
-          position,
-          listIDs: [0],
-          stats: result.data,
-          points: 0,
-        };
-        let tempPlayers = players.slice();
-        tempPlayers.push(newPlayer);
-        setPlayers(tempPlayers);
-      })
-      .catch(err => {
-        console.log('error getting player', err);
-      });
-    document.getElementById('player-name').value = '';
-    document.getElementById('position').value = 'QB';
+    if (name.split(' ').length > 1) {
+      getPlayer(name)
+        .then(result => {
+          const newPlayer = {
+            name,
+            position,
+            listIDs: [0],
+            stats: result.data,
+            points: 0,
+          };
+          let tempPlayers = players.slice();
+          tempPlayers.push(newPlayer);
+          setPlayers(tempPlayers);
+        })
+        .catch(err => {
+          console.log('error getting player', err);
+        });
+      document.getElementById('player-name').value = '';
+      document.getElementById('position').value = 'QB';
+    }
   };
 
   const includePlayerInList = (event, name, listID) => {
