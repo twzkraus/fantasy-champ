@@ -12,8 +12,8 @@
 
 .playerBox {
   display: flex;
-  align-items: left;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 5px;
   background-color: rgb(217, 233, 243);
   padding: 0px;
@@ -24,13 +24,18 @@
   font-size: 30px;
   font-weight: bold;
   position: relative;
-  float: left;
+  left: 5%;
 }
 
 .playerPos {
   font-size: 20px;
+  position: absolute;
+  left: 50%;
+}
+
+.playerLists {
   position: relative;
-  margin-right: 50px;
+  right: 5%;
 }
 
 .statsTable {

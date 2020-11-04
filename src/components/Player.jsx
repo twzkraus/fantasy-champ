@@ -74,7 +74,7 @@ const Player = ({ playerData, addToList, removeFromList, lists }) => {
       <div key={`${playerData.name}-header`} className={styles.playerBox} onClick={handleClick}>
         <p className={styles.playerName}>{playerData.name}</p>
         <p className={styles.playerPos}>{playerData.position}</p>
-        <p className={styles.listNames}>{playerData.listIDs.map(id => ' - ' + lists[id] + '\n')}</p>
+        <p className={styles.playerLists}>{playerData.listIDs.map(id => ' - ' + lists[id] + '\n')}</p>
       </div>
     </div>
       {clicked ? getExpandedStats() : ''}
