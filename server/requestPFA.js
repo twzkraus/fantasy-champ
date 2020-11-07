@@ -1,5 +1,5 @@
 const { curly } = require('node-libcurl');
-// const PRO_FOOTBALL_API_KEY = require('../secrets.js');
+const PRO_FOOTBALL_API_KEY = require('../secrets.js');
 
 // sends query to Pro Football API using the parameters defined in options
 // returns a promise

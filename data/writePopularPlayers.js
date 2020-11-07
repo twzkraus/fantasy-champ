@@ -3,7 +3,6 @@ const executeRequest = require('../server/requestPFA');
 
 const stream = fs.createWriteStream('./data/popularPlayers.json');
 stream.write('{');
-// fs.writeFileSync('./data/popularPlayers.json', '{');
 
 const popularPlayers = [
   {
@@ -129,8 +128,5 @@ popularPlayers.forEach((player, i) => {
     .then(response => {
       popularData[player.name] = response.data;
       stream.write(`"${player.name}":{"position": "${player.position}", "stats":${response.data} },`);
-      // fs.writeFileSync('./data/popularPlayers.json', `"${player.name}":${response.data},`);
     })
 });
-
-// stream.on('close', () => console.log('ended stream'));
